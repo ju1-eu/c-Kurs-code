@@ -1,0 +1,35 @@
+ju 7-Mrz-20 alle-c-files.txt
+
+in Makefile speichern:
+#----------------------
+
+TARGETS=\
+	ComparisonOperator.exe \
+	Enum.exe \
+	FunctionsBib.exe \
+	IfStatement.exe \
+	IfStatement2.exe \
+	IfStatement3.exe \
+	IfStatement4.exe \
+	Modulo.exe \
+	programmieruebung2.exe \
+	Switch.exe \
+	Switch2.exe \
+
+#-----------------------
+
+clean:
+	rm ComparisonOperator.exe 
+	rm Enum.exe 
+	rm FunctionsBib.exe 
+	rm IfStatement.exe 
+	rm IfStatement2.exe 
+	rm IfStatement3.exe 
+	rm IfStatement4.exe 
+	rm Modulo.exe 
+	rm programmieruebung2.exe 
+	rm Switch.exe 
+	rm Switch2.exe 
+
+#-----------------------
+

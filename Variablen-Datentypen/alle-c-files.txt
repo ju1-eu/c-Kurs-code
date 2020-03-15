@@ -1,0 +1,37 @@
+ju 7-Mrz-20 alle-c-files.txt
+
+in Makefile speichern:
+#----------------------
+
+TARGETS=\
+	CharVariablen.exe \
+	FloatZahlen.exe \
+	IntergerBinaer.exe \
+	main.exe \
+	Printf-Wertebereich-Fehler.exe \
+	programmieruebung1.exe \
+	VariablenEinlesen.exe \
+	VariablenKonsole.exe \
+	VariablenRanges.exe \
+	VariablenRechnen.exe \
+	VariablenRechnen2.exe \
+	VariablenZahlen.exe \
+
+#-----------------------
+
+clean:
+	rm CharVariablen.exe 
+	rm FloatZahlen.exe 
+	rm IntergerBinaer.exe 
+	rm main.exe 
+	rm Printf-Wertebereich-Fehler.exe 
+	rm programmieruebung1.exe 
+	rm VariablenEinlesen.exe 
+	rm VariablenKonsole.exe 
+	rm VariablenRanges.exe 
+	rm VariablenRechnen.exe 
+	rm VariablenRechnen2.exe 
+	rm VariablenZahlen.exe 
+
+#-----------------------
+

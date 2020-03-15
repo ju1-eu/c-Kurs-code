@@ -1,0 +1,23 @@
+ju 8-Mrz-20 alle-c-files.txt
+
+in Makefile speichern:
+#----------------------
+
+TARGETS=\
+	Functions.exe \
+	FunctionsBib.exe \
+	main.exe \
+	MeineBib.exe \
+	Return.exe \
+	h.exe \
+#-----------------------
+
+clean:
+	rm Functions.exe 
+	rm FunctionsBib.exe 
+	rm main.exe 
+	rm MeineBib.exe 
+	rm Return.exe 
+	rm h.exe
+#-----------------------
+

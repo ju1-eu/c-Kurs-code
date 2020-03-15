@@ -1,0 +1,122 @@
+# GCC C++ compiler
+
+Visual Studio Code to use the GCC C++ compiler (g++) and GDB debugger from Mingw-w64 to create programs that run on Windows.
+
+https://code.visualstudio.com/docs/cpp/config-mingw
+
+# Software
+
+- Visual Studio Code: https://code.visualstudio.com/download
+- Visual Studio 2019 (Windows): https://visualstudio.microsoft.com/de/vs/
+- C/C++ extension for VS Code (Ctrl+Shift+X): C/C++
+- Mingw-w64: https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/installer/mingw-w64-install.exe/download
+- Windows PATH > Compiler-Pfad: c:\mingw-w64\x86_64-8.1.0-win32-seh-rt_v6-rev0\mingw64\bin
+
+# Check your MinGW installation
+
+g++ --version
+g-- --version
+gdb --version
+
+# Create Hello World
+
+mkdir helloworld
+cd helloworld
+code .
+
+.vscode (folder in the workspace:)
+	tasks.json (build instructions)
+	launch.json (debugger settings)
+	c_cpp_properties.json (compiler path and IntelliSense settings)
+	
+// 	helloworld.cpp
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    vector<string> msg {"Hello", "C++", "World", "from", "VS Code", "and the C++ extension!"};
+
+    for (const string& word : msg)
+    {
+        cout << word << " ";
+    }
+    cout << endl;
+}
+
+# Build helloworld.cpp (Ctrl+Shift+B)
+
+.vscode/tasks.json
+
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "g++.exe build active file",
+      "command": "C:\\mingw-w64\\i686-8.1.0-posix-dwarf-rt_v6-rev0\\mingw32\\bin\\g++.exe",
+      "args": ["-g", "${file}", "-o", "${fileDirname}\\${fileBasenameNoExtension}.exe"],
+      "options": {
+        "cwd": "C:\\mingw-w64\\i686-8.1.0-posix-dwarf-rt_v6-rev0\\mingw32\\bin"
+      },
+      "problemMatcher": ["$gcc"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}
+
+Debug (F5) > Debugging starten
+
+.vscode/launch.json
+
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "g++.exe build and debug active file",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "miDebuggerPath": "C:\\mingw-w64\\i686-8.1.0-posix-dwarf-rt_v6-rev0\\mingw32\\bin\\gdb.exe",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ],
+      "preLaunchTask": "g++.exe build active file"
+    }
+  ]
+}
+
+C/C++ configurations (Ctrl+Shift+P) 
+
+.vscode/c_cpp_properties.json
+
+{
+  "configurations": [
+    {
+      "name": "Win32",
+      "includePath": ["${workspaceFolder}/**"],
+      "defines": ["_DEBUG", "UNICODE", "_UNICODE"],
+      "compilerPath": "C:\\mingw-w64\\i686-8.1.0-posix-dwarf-rt_v6-rev0\\mingw32\\bin\\gcc.exe",
+      "cStandard": "c11",
+      "cppStandard": "c++17",
+      "intelliSenseMode": "clang-x86"
+    }
+  ],
+  "version": 4
+}

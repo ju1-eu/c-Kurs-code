@@ -1,0 +1,119 @@
+{  
+    "version": "2.0.0", 
+    "tasks": [
+        {
+            "label": "Release",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}Relase"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+
+        {
+            "label": "Debug",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "${file}",
+                "-g3",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}Debug"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+
+        {
+            "label": "Makefile Debug",
+            "type": "shell",
+            "command": ["rm '${fileDirname}'/*.o"],
+            "dependsOn": [
+                "Makefile Debug_gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+
+        {
+            "label": "Makefile Debug + Execute",
+            "type": "shell",
+            "command": "${fileDirname}/${fileBasenameNoExtension}Debug",
+            "dependsOn": [
+                "Makefile Debug"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+
+        {
+            "label": "Makefile Release",
+            "type": "shell",
+            "command": ["rm '${fileDirname}'/*.o"],
+            "dependsOn": [
+                "Makefile Release_gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+
+        {
+            "label": "Makefile Release + Execute",
+            "type": "shell",
+            "command": "${fileDirname}/${fileBasenameNoExtension}Release",
+            "dependsOn": [
+                "Makefile Release"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+
+        {
+            "label": "Makefile Debug_gcc",
+            "type": "shell",
+            "command": ["make"],
+            "args": ["--directory=${fileDirname}/", "DEBUG=1"]
+        },
+
+        {
+            "label": "Makefile Release_gcc",
+            "type": "shell",
+            "command": ["make"],
+            "args": ["--directory=${fileDirname}/", "DEBUG=0"]
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+ju 7-Mrz-20 alle-c-files.txt
+
+in Makefile speichern:
+#----------------------
+
+TARGETS=\
+	main.exe \
+	halloWelt.exe \
+#-----------------------
+
+clean:
+	rm main.exe 
+	rm halloWelt.exe
+#-----------------------
+
